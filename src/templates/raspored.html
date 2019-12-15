@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Studenti</title>
+    <style>
+    tr:nth-child(even) {background: #0033cc}
+    tr:nth-child(odd) {background: #809fff}
+    
+    
+    </style>
+
+</head>
+<body>
+    <div>
+            <input style="float: right;" id="myInput" type="text" placeholder="Search..">
+    <table border="1" style="border-collapse: collapse;"> 
+        <thead>
+            <tr>
+                <th>Predmet</th>
+                <th>Tip predavanja</th>
+                <th>Broj indeksa</th>
+                <th>Grupa</th>
+                <th>Dan</th>
+                <th>Vreme</th>
+                <th>Ucionica</th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            {% for red in redovi %}
+            
+                <tr>
+                    <td>{{red.split(',')[0]}}</td>
+                    <td>{{red.split(',')[1]}}</td>
+                    <td>{{red.split(',')[2]}}</td>
+                    <td>{{red.split(',')[3]}}</td>
+                    <td>{{red.split(',')[4]}}</td>
+                    <td>{{red.split(',')[5]}}</td>
+                    <td>{{red.split(',')[6]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+    
+           
+        
+    </div>
+ 
+<div class="row" style="flex: 50%;">
+<div class="column" style="float: left; width: 20%; flex:50%;">
+<table border="1" style="border-collapse: collapse;width: 100%;"> 
+    <tbody>
+            <th>Predmet</th>
+    {% for predavac in svi_predavaci %}
+    <tr>
+    <td style="text-align: center;">{{predavac}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+<div class="column">
+<table border="1" style="border-collapse: collapse; width: 20%"> 
+    <tbody>
+    
+            <th>Ucionica</th>
+    {% for ucionica in sve_ucionice %}
+    <tr>
+    <td style="text-align: center;">{{ucionica}}</td>
+    </tr>
+    {% endfor %}
+    
+    
+    </tbody>
+
+</table>
+</div>
+</div>
+
+</body>>
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ 
+ <script>
+        $(document).ready(function(){
+           $("#myInput").on("keyup", function() {
+             var value = $(this).val().toLowerCase();
+             $("#myTable tr").filter(function() {
+               $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+             });
+           });
+         });
+       </script>
+<script>
+$("td").click(function(){
+  alert("Nisam imao vremena da uradim ovo :( ");
+});
+
+</script>
+</html>
